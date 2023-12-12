@@ -1,0 +1,208 @@
+:root {
+  font-size: 62.5%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  padding: 5%;
+  display:flex;
+  flex-direction: column;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: 3.5rem;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width:33%;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.modal h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.modal form {
+  display: grid;
+  grid-auto-rows: auto;
+  /* align-content: center; */
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input#task {
+  width:75%;
+  margin-bottom: 2rem;
+  height: 3rem;
+  /* vertical-align: middle; */
+  padding: 8px;
+  font-size: 2rem;
+}
+
+label {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  vertical-align: middle;
+}
+
+form button {
+  width: 50%;
+  padding:1rem;
+  justify-self: center;
+  border: 0;
+  background-color: green;
+}
+
+form button:hover{
+  background-color: black;
+  color:white;
+}
+
+.add {
+  background-color: white;
+  color:aquamarine;
+  box-sizing: content-box;
+  padding: 8px 4px;
+  width: 25%;
+  align-self: end;
+  margin-bottom: 10px;
+}
+
+.header-buttons {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-buttons button {
+  border: 0;
+  background-color: white;
+  margin-right: 8px;
+}
+
+.header-buttons button.active {
+  border-bottom: 2px solid black;
+}
+
+.header-buttons button.inactive:hover {
+  border-bottom: 2px solid black;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-container button {
+  width: 10%;
+}
+
+.tasks {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.tasks:hover {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+
+/* .tasks::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+} */
+
+/* .tasks:hover::before {
+  opacity: 1;
+} */
+
+.tasks > * {
+  justify-self: center;
+}
+
+.tasks button {
+  width: max-content;
+  justify-self: center;
+}
+
+.task-text {
+  font-size: 1rem;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.header > * {
+  justify-self: center;
+
+}
+
+input.search {
+  align-self: center;
+}
+
+.search {
+  width:100%;
+}
+
+.header-buttons form > div  {
+    display: flex;
+    align-content: center;
+}
