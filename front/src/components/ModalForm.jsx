@@ -3,7 +3,7 @@ const ModalForm = ({add, taskVal, handleChange}) => {
       <form onSubmit={add}>
         <div className="form-item">
           <label htmlFor='task'>Task</label>
-          <input type='text' id='task' name='task' value={taskVal} onChange={handleChange} required/>
+          <input maxLength={40} type='text' id='task' name='task' value={taskVal} onInput={handleChange} required/>
         </div>
         <button>Submit</button>
       </form>

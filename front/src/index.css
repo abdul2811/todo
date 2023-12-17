@@ -77,7 +77,7 @@ input#task {
   font-size: 2rem;
 }
 
-label {
+.form-item > label {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   vertical-align: middle;
@@ -88,22 +88,29 @@ form button {
   padding:1rem;
   justify-self: center;
   border: 0;
-  background-color: green;
+  background-color: black;
+  color: white;
 }
 
 form button:hover{
-  background-color: black;
-  color:white;
+  background-color: #edecec;
+  color:black;
 }
 
 .add {
-  background-color: white;
-  color:aquamarine;
+  background-color: black;
+  color:white;
   box-sizing: content-box;
   padding: 8px 4px;
   width: 25%;
   align-self: end;
   margin-bottom: 10px;
+  border:none;
+}
+
+.add:hover {
+  background-color: #edecec;
+  color:black;
 }
 
 .header-buttons {
@@ -148,7 +155,7 @@ form button:hover{
 
 .tasks:hover {
   transform: scale(1.01);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 /* .tasks::before {
@@ -185,7 +192,7 @@ form button:hover{
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   justify-content: space-between;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   padding: 10px;
 }
 
@@ -194,15 +201,80 @@ form button:hover{
 
 }
 
-input.search {
+input#search {
   align-self: center;
+  padding: 0 8px;
+  width:15vw;
+  /* border-radius: 16px;
+  border-width: 1px; */
+  border: none;
 }
 
-.search {
-  width:100%;
+input#search:focus {
+  outline: none;
 }
+
+#search:hover {
+  cursor: text;
+}
+
+.form-item label {
+  cursor: pointer;
+}
+
 
 .header-buttons form > div  {
     display: flex;
     align-content: center;
+}
+
+#trash-button {
+  width: 25px;
+  height: 25px;
+  border: none;
+  background-color: white;
+}
+
+#trash {
+  width:100%;
+  height:100%;
+}
+
+#trash-button:hover {
+  transform: scale(1.25);
+}
+
+
+#search-img {
+  width: 25px;
+  height: 25px;
+  align-self: center;
+}
+
+#search-form > label {
+  display: flex;
+  align-content: center;
+}
+
+#search-form {
+  border: solid 2px black;
+  padding: 0 4px;
+  border-radius: 16px ;
+}
+
+/* input#search:hover, #search-form:hover {
+  background-color: #ccc;
+} */
+
+.hovered-search {
+  background-color: #eeeeee;
+}
+
+#status-button {
+  border: none;
+  padding: 4px;
+}
+
+#status-button:hover {
+  background-color: #ccc;
 }

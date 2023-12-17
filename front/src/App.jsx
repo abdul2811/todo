@@ -2,6 +2,7 @@ import './index.css'
 import ModalForm from './components/ModalForm'
 import Add from './components/Add'
 import Tasks from './components/Tasks'
+import Search from './components/Search'
 import { useState, useEffect } from 'react'
 
 // const SortDropdown = ({ handleChange, isTodo }) => {
@@ -31,15 +32,6 @@ import { useState, useEffect } from 'react'
 // };
 // }
 
-const Search = ({handleChange}) => {
-  return (
-    <form>
-        <div>
-          <input className='search' onChange={handleChange} />
-        </div>
-      </form>
-  )
-}
 
 const Todo = ({handleClick, isTodo}) => {
   // const buttonStyle = {
@@ -81,8 +73,8 @@ const All = ({handleClick, isAll}) => {
 
 const App = () => {
   const [tasks, setTasks] = useState([
-    { name: 'exercise', dateAdded: "Dec 1, '23", dateCompleted: "", id: 1, completed: false, status: 'In Progress' },
-    { name: 'code', dateAdded: "Dec 2, '23", dateCompleted: "", id: 2, completed: false, status: 'In Progress' }
+    { name: 'Exercise', dateAdded: "Dec 1, '23", dateCompleted: "", id: 1, completed: false, status: 'In Progress' },
+    { name: 'Code', dateAdded: "Dec 2, '23", dateCompleted: "", id: 2, completed: false, status: 'In Progress' }
   ]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [newTask, setNewTask] = useState('')
@@ -91,6 +83,8 @@ const App = () => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isAll, setIsAll] = useState(false);
   const [search, setSearch] = useState('');
+  const [isHover, setIsHover] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
   // const [sortOption, setSortOption] = useState('dateAdded');
   // const [sortedTasks, setSortedTasks] = useState([...tasks]);
 
@@ -124,12 +118,19 @@ const App = () => {
     // }
   }
 
-  const handleTaskChange = (event) => {
-    setNewTask(event.target.value)
+  const handleTaskChange = (e) => {
+    if (e.target.value.length <= 40) {
+      setNewTask(e.target.value);
+    } else {
+      // Truncate the input value if it exceeds the limit
+      setNewTask(e.target.value.slice(0, 40));
+    }
   }
 
   const handleDelete = (id) => {
-    setTasks(tasks.filter(task => task.id !== id))
+    if (window.confirm("Are you sure you want to delete?")) {
+      setTasks(tasks.filter(task => task.id !== id))
+    }
   }
 
   const handleCompletion = (id) => {
@@ -220,6 +221,27 @@ const App = () => {
 //   }
   //  }
 
+  const handleMouseEnter = () => {
+    isFocus ? setIsHover(false) : setIsHover(true)
+    // setIsHover(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHover(false)
+  }
+
+  const handleFocus = () => {
+    setIsHover(false)
+    setIsFocus(true)
+    // setIsHoverClick(true)
+  }
+
+  const handleBlur = () => {
+    setIsFocus(false)
+  }
+ 
+  const inlineStyle = isHover ? 'hovered-search' : 'unhovered-search'
+
   return (
     <div className='body'>
       <h1>To-do</h1>
@@ -229,7 +251,7 @@ const App = () => {
           <Todo isTodo={isTodo} handleClick={() => handleTodo()}/><Completed isCompleted={isCompleted} handleClick={() => handleCompleted()}/><All isAll={isAll} handleClick={() => handleAll()}/>
         </div>
         <div>
-          <Search handleChange={handleSearchChange} />
+          <Search inlineStyle={inlineStyle} handleChange={handleSearchChange} handleMouseLeave={() => handleMouseLeave()} handleMouseEnter={() => handleMouseEnter()} handleFocus={() => handleFocus()} handleBlur={() => handleBlur()} />
         </div>
       </div>
       {isModalOpen && (
@@ -240,7 +262,7 @@ const App = () => {
           </div>
         </div>
       )}
-      <div className='header'><div className='rest'>Name</div><div className='rest'>Start</div><div className='rest'>End</div><div className='center'>Delete</div><div className='center'>Status</div></div>
+      <div className='header'><div>Name</div><div>Start</div><div>End</div><div>Delete</div><div>Status</div></div>
       {filteredTasks.map((task) =>
         <Tasks className='tasks' status={task.status} tasks={task} key={task.id} handleDelete={() => handleDelete(task.id)} handleCompletion={() => handleCompletion(task.id)} />
         )}
