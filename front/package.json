@@ -2,10 +2,12 @@
   "name": "front",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://abdul2811.github.io/todo/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "main -d build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
