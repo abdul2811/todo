@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+p {
+  word-break: break-word
+}
+
 .body {
   padding: 5%;
   display:flex;
@@ -277,4 +281,15 @@ input#search:focus {
 
 #status-button:hover {
   background-color: #ccc;
+}
+
+@media (max-width: 450px) {
+  .modal {
+    width: 75%;
+  }
+  #status-button {
+    width:100%;
+    word-break: break-word;
+    font-size: 1rem;
+  }
 }
